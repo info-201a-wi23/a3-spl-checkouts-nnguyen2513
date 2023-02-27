@@ -1,86 +1,110 @@
----
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("Chart1.R")
+source("Chart2.R")
+source("Chart3.R")
+source("summary.R")
+```
+--- 
 title: "A3: SPL Library Checkouts"
 output: html_document
 ---
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+Horizon and Overdrive are both system & services that allows you to view contents via a library. Both of these services are available for you to use at the Seattle public library (SPL). SPL allows you to still access material without having to go in person into the library itself to check it out. Just as how we have become more reliant on more digital applications to do school work, libraries can now also allow us to access content online. As the pandemic was not very long ago, and now that we are seeing a fast trend towards digital technology to access our information, I was curious as to the trends of the types of services most/ least used in SPL over the past several years. 
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+Horizon was the main form of checkout medium while Freegal was the least used form of medium in 2018. Both Horizon and Overdrive had the most amounts of check outs in January. Below is a list of the top 10 most checked out titles in the past 5 years:
 
-These will likely be calculated using your DPLYR skills, answering questions such as:
+1) SPL HotSpot: connecting Seattle/ [distributed by T-mobile]
+2) FlexTech --Laptop
+3) Headphones/ Seattle Public Library 
+4) Educated: A Memoir
+5) Becoming (Unabridged)
+6) Where the Crawdads Sing
+7) So You Want to Talk about Race (Unabridged)
+8) Becoming
+9) In Building Device Checkout
+10) The New Yorker
 
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
+Which was the main form of checkout mediums, had the most usage in 2018?
 
-Feel free to calculate and report values that you find relevant.
+`r top_medium``
+
+Which was the main form of checkout mediums, had the least usage in 2018?
+
+`r bot_medium`
+
+Which month did Horizon have the most amount of check outs in total for the past 5 years? 
+
+`r horizon_monthly_avg`
+
+Which months did OverDrive have the most amount of check outs in total for the past 5 years?
+
+`r OD_monthly_avg`
+
+What are the top 10 most checked out 'Titles' of within the last 5 year?
+
+`r top_10_most_checked_out`
 
 ### The Dataset
 
 - Who collected/published the data?  
+
+Seattle Public Library (SPL) 
+
 - What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
+
+Publisher, publication year, creater, ISBN, title, subject, checkouts, checkout year & month & type, usage class, and material type
+
 - How was the data collected or generated?  
+
+When people check things out at Seattle Public liberary locations, it gets noted as data.
+
 - Why was the data collected?  
+
+To show the public what people like to use and to make sure people can access and view it (not withhold any information). It was also used to improve the performace of the libarary if the data was just out there for anyone to see- keeps them accountable 
+
 - What, if any, ethical questions do you need to consider when working with this data?  
+
+If the data from these people using the library was taken with their consent and knowlegde.
+
 - What are possible limitations or problems with this data?   (at least 200 words)
 
+Some variables did not have all the data filled in so when analyzing them, I was looking for something that had as much data as possible. The more data you have your hands on, the more accurate and the more it is describing the whole story more accurately. In terms of how far back we can go with this data, that is a limitation in and of itself because the technology wasn't as prominent or readily available to use for this type of platform (hence why we are more familiar with people back then going to the physical libraries to check things out). Due to this, we can only go back and have data for as long as the SPL library started to adopt this online/ digital system. This is not a problem in my case since it is more focused on recent years ever since the pandemic hit and the only way people could borrow media was online. Though, for those that are looking for data further back, the usage data would be handy. I wouldn't say that this was a major limitation because if technology was used a lot back then, there would be no use in collecting this type of data for them, but it would be for us nowadays to look at. 
+
+- How many observations (rows) are in your data?
+> 816354
 
 ### First Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+`r Chart1`
 
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
-```
+I included this chart because seeing the most and least popular type of medium used always is a good start to look into why people may like one form over another. The trend seen in this graph is that the most popular checkout types over the past 5 years is Horizon, while the least popular type is Freegal.
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+`r Chart2`
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+I included this chart because I wanted to see if the forms of medium changed in popularity depending on the month, or if there was a certain month that people just used these mediums more than others. The graph shows that the highest amounts of check outs for the top 2 most used mediums (Horizon and OverDrive) was in January.
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
-```
 
 ### Your Choice
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+`r Chart3`
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
+I wanted to include this chart because I wanted to see what the most popular titles are for checkouts as this may provide a clue as to who the main audience is. The graph shows that (roughly estimated most to least purely based on which bar looked higher than another), the top 10 titles in the past 5 years are: 
 
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
-```
-
-
+1) SPL HotSpot: connecting Seattle/ [distributed by T-mobile]
+2) FlexTech --Laptop
+3) Headphones/ Seattle Public Library 
+4) Educated: A Memoir
+5) Becoming (Unabridged)
+6) Where the Crawdads Sing
+7) So You Want to Talk about Race (Unabridged)
+8) Becoming
+9) In Building Device Checkout
+10) The New Yorker
